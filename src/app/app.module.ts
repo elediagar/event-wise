@@ -9,8 +9,8 @@ import { LoginComponent } from './components/main/login/login.component';
 import { RegisterComponent } from './components/main/register/register.component';
 import { NewComponent } from './components/main/new/new.component';
 import { DetailComponent } from './components/main/detail/detail.component';
-import { EventDescriptionComponent } from './components/event/description/event-description.component';
-import { EventHomeComponent } from './components/event/home/event-home.component';
+import { EventDescriptionComponent } from './components/event/event-description/event-description.component';
+import { EventHomeComponent } from './components/event/event-home/event-home.component';
 import { ContactoComponent } from './components/event/contacto/contacto.component';
 import { HeaderComponent } from './components/main/header/header.component';
 import { HeroComponent } from './components/main/hero/hero.component';
@@ -19,6 +19,7 @@ import { CardEventComponent } from './components/main/card-event/card-event.comp
 import { ListEventsComponent } from './components/main/list-events/list-events.component';
 import { EventHeaderComponent } from './components/event/event-header/event-header.component';
 import { EventFooterComponent } from './components/event/event-footer/event-footer.component';
+import { EventComponent } from './components/event/event.component';
 
 
 @NgModule({
@@ -40,6 +41,7 @@ import { EventFooterComponent } from './components/event/event-footer/event-foot
     ListEventsComponent,
     EventHeaderComponent,
     EventFooterComponent,
+    EventComponent
   ],
   imports: [
     BrowserModule,

@@ -7,6 +7,9 @@ import { HomeComponent } from './components/main/home/home.component';
 import { LoginComponent } from './components/main/login/login.component';
 import { MainComponent } from './components/main/main.component';
 import { RegisterComponent } from './components/main/register/register.component';
+import { EventHomeComponent } from './components/event/event-home/event-home.component';
+import { EventDescriptionComponent } from './components/event/event-description/event-description.component';
+import { ContactoComponent } from './components/event/contacto/contacto.component';
 
 const routes: Routes = [
   {
@@ -14,15 +17,15 @@ const routes: Routes = [
       { path: 'home', component: HomeComponent },
       { path: 'login', component: LoginComponent },
       { path: 'register', component: RegisterComponent },
-      { path: 'new-event', component: NewComponent },
-      { path: 'event/:event_id', component: DetailComponent },
+      { path: 'new', component: NewComponent },
+      { path: 'event/id/:event_id', component: DetailComponent },
     ]
   },
   {
     path: 'event/:event-name', component: EventComponent, children: [
-      { path: 'home', },
-      { path: 'description', },
-      { path: 'contact', },
+      { path: 'home', component: EventHomeComponent },
+      { path: 'description', component: EventDescriptionComponent },
+      { path: 'contact', component: ContactoComponent },
     ]
   }
 ];
