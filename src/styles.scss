@@ -17,7 +17,9 @@ body {
     font-size: var(--text-s);
 }
 
-button {
+button,
+a,
+p {
     font-size: var(--text-s) !important;
 }
 

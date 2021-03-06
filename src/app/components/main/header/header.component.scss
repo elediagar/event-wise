@@ -1,0 +1,37 @@
+@import url(../../../../../src/styles.scss);
+
+nav>div>a>img{
+    width: 160px; 
+    height: 20px;
+    margin-bottom: 10px;
+}
+
+nav{
+    transition: 0.5s;
+}
+
+.nav-link{
+    color: var(--main-dark-color) !important;
+}
+
+.nav-link.active,
+.txt-dark .nav-link.active{
+    color: var(--main-color) !important;
+}
+
+.txt-dark a{
+    color: white !important;
+}
+
+a{
+    transition: 0.2s;
+}
+
+a:hover,
+.txt-dark a:hover{
+    text-decoration: underline;
+    color: var(--main-color) !important;
+}
+
+
+
