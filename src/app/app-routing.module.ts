@@ -10,11 +10,12 @@ import { RegisterComponent } from './components/main/register/register.component
 import { EventHomeComponent } from './components/event/event-home/event-home.component';
 import { EventDescriptionComponent } from './components/event/event-description/event-description.component';
 import { ContactoComponent } from './components/event/contacto/contacto.component';
+import { ListEventsComponent } from './components/main/list-events/list-events.component';
 
 const routes: Routes = [
   {
     path: '', component: MainComponent, children: [
-      { path: '', component: HomeComponent },
+      { path: '', pathMatch: 'full', component: HomeComponent },
       { path: 'home', component: HomeComponent },
       { path: 'login', component: LoginComponent },
       { path: 'register', component: RegisterComponent },
