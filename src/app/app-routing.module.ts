@@ -14,6 +14,7 @@ import { ContactoComponent } from './components/event/contacto/contacto.componen
 const routes: Routes = [
   {
     path: '', component: MainComponent, children: [
+      { path: '', component: HomeComponent },
       { path: 'home', component: HomeComponent },
       { path: 'login', component: LoginComponent },
       { path: 'register', component: RegisterComponent },

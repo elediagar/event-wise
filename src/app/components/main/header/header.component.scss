@@ -15,11 +15,11 @@ nav{
 }
 
 .nav-link.active,
-.txt-dark .nav-link.active{
+.txt-light .nav-link.active{
     color: var(--main-color) !important;
 }
 
-.txt-dark a{
+.txt-light a{
     color: white !important;
 }
 
@@ -28,7 +28,7 @@ a{
 }
 
 a:hover,
-.txt-dark a:hover{
+.txt-light a:hover{
     text-decoration: underline;
     color: var(--main-color) !important;
 }

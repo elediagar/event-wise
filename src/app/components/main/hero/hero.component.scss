@@ -1,20 +1,31 @@
 @import url(../../../../../src/styles.scss);
 
 .hero {
-    margin-top: 50px !important;
-    color: white;
-    width:100%;
-    height:500px;
-    background: url('https://images.unsplash.com/photo-1438109491414-7198515b166b?q=80&fm=jpg&s=cbdabf7a79c087a0b060670a6d79726c');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size:cover;
-    background-attachment: fixed;
-  }
-
-  .container{
-    margin-top: 200px !important;
+  margin-top: 50px !important;
+  color: white;
+  width:100%;
+  height:500px;
+  background: 
+  linear-gradient(
+    #00000099 , 
+    #00000099),
+  url(../../../../assets/img/event-happy-1.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size:cover;
+  background-attachment: fixed;
 }
 
+.container{
+  margin-top: 150px !important;
+  font-weight: --f-weight-m;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+p{
+  font-size: 1.2rem !important;
+}
 
 

@@ -1,11 +1,12 @@
 :root {
     --main-color: #3ec9cc;
     --main-color-hover: #35aaac;
-    --main-dark-color: #030728;
+    --main-dark-color: #343a40;
     --text-s: 14px;
     --text-b: 20px;
     --shadow-full: 0px 0px 4px 2px rgba(0, 0, 0, 0.2);
     --shadow-b-r: 1px 1px 4px 2px rgba(0, 0, 0, 0.2);
+    --f-weight-xs: 300;
     --f-weight-s: 400;
     --f-weight-m: 600;
     --f-weight-l: 800;
@@ -23,6 +24,10 @@ p {
     font-size: var(--text-s) !important;
 }
 
+.btn{
+    padding: .75rem 1.5rem !important;
+}
+
 .btn-primary{
     border-color: var(--main-color);
     background-color: var(--main-color);
@@ -33,6 +38,10 @@ p {
     border-color: var(--main-color-hover);
     background-color:var(--main-color-hover);
 }
+
+.btn-primary:active {
+    background-color: var(--main-dark-color) !important; 
+  }
 
 h1{
     font-weight: var(--f-weight-l);
