@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { HttpClientModule } from '@angular/common/http'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -21,6 +22,7 @@ import { ListEventsComponent } from './components/main/list-events/list-events.c
 import { EventHeaderComponent } from './components/event/event-header/event-header.component';
 import { EventFooterComponent } from './components/event/event-footer/event-footer.component';
 import { EventComponent } from './components/event/event.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -47,7 +49,9 @@ import { EventComponent } from './components/event/event.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    HttpClientModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
