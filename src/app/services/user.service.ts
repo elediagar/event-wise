@@ -9,7 +9,8 @@ export interface User {
   password: string;
   //password_repeat: string;
   mobile: number;
-  adress: string;
+  phone: number;
+  address: string;
   city: string;
   postcode: string;
   country: string;
@@ -20,6 +21,18 @@ export interface User {
 })
 export class UserService {
 
-  constructor(private httpClient: HttpClient) { }
+  baseUrl: string;
+
+  constructor(private httpClient: HttpClient) {
+    this.baseUrl = 'http://localhost:3000'
+  }
+
+  registerUser(pUser) {
+    return this.httpClient.post(`${this.baseUrl}/register`, pUser).toPromise()
+  }
+
+  loginUser(pUser) {
+    return this.httpClient.post(`${this.baseUrl}/login`, pUser).toPromise()
+  }
 
 }

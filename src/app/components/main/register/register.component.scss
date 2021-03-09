@@ -35,10 +35,11 @@ section{
 .col-sm-11,
 .col-sm-12 {
     padding-right: 5px;
-    padding-left: 5px;
+    padding-left: 0px;
 }
 
 label{
+    font-size: 0.8rem;
     color: var(--main-dark-color) !important;
 }
 
@@ -70,7 +71,7 @@ input[type="text"], textarea {
     color: #636769;
     opacity: 1;
     font-weight: 100;
-    font-size: 0.8rem !important;
+    font-size: 0.7rem !important;
  }
 
  .register-footer p a{
@@ -87,3 +88,15 @@ input[type="text"], textarea {
  }
 
 
+ // Errores formulario
+
+small.text-muted {
+    padding-left: 2px;
+    color: #cd503a !important;
+    font-size: 0.6rem;
+    font-weight: 400;
+}
+
+input.ng-invalid.ng-touched{
+    border-color: #cd503a !important;
+}

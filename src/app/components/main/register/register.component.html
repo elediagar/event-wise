@@ -1,6 +1,6 @@
 <section>
     <div class="register-header">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="#3ec9cc" class="bi bi-person-circle mt-3 mb-2"
+        <svg xmlns="http://www.w3.org/2000/svg" fill="#3ec9cc" class="bi bi-person-circle mt-3 mb-1"
             viewBox="0 0 16 16">
             <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
             <path fill-rule="evenodd"
@@ -9,70 +9,83 @@
         <h4>¡Te damos la bienvenida!</h4>
         <p>Crea una cuenta para comenzar</p>
     </div>
-    <div class="col-lg-6 offset-lg-3 col-md-10 offset-md-1 col-sm-10 offset-sm-1">
+    <div class="col-lg-4 offset-lg-4 col-md-10 offset-md-1 col-sm-10 offset-sm-1">
         <div class="form">
-            <div class="row mb-3 mx-1">
-                <label for="inputEmail3" class="col-sm-2 col-form-label">Nombre</label>
-                <div class="col-sm-5 mb-2">
-                    <input type="text" class="form-control" placeholder="Nombre">
+            <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+                <label for="inputEmail3" class="col-form-label ml-1">Nombre</label>
+                <div class="row mb-2 mx-1">
+                    <div class="col-sm-6 mb-1">
+                        <input type="text" class="form-control" placeholder="Nombre" formControlName="name">
+                        <small class="form-text text-muted" *ngIf="checkValidator('name','required')">
+                            El nombre es obligatorio
+                        </small>
+                    </div>
+                    <div class="col-sm-6 mb-1">
+                        <input type="text" class="form-control" placeholder="Apellidos" formControlName="surname">
+                        <small class="form-text text-muted" *ngIf="checkValidator('surname', 'required')">El
+                            apellido es obligatorio</small>
+                    </div>
                 </div>
-                <div class="col-sm-5 mb-2">
-                    <input type="text" class="form-control" placeholder="Apellidos">
+                <label for="inputEmail3" class="col-form-label ml-1">Email</label>
+                <div class="mb-1 mx-1">
+                    <input type="email" class="form-control" placeholder="ejemplo@ejemplo.com" formControlName="email">
                 </div>
-            </div>
-            <div class="row mb-1 mx-2">
-                <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
-                <div class="col-sm-10 mb-2">
-                    <input type="text" class="form-control" placeholder="ejemplo@ejemplo.com">
+                <div class="mb-2 mx-1">
+                    <input type="email" class="form-control" placeholder="Repetir email" formControlName="email_repeat">
                 </div>
-            </div>
-            <div class="row mb-3 mx-2">
-                <div class="col-sm-10 offset-sm-2 mb-2">
-                    <input type="text" class="form-control" placeholder="Repetir email">
+                <label for="inputEmail3" class="col-form-label ml-1">Contraseña</label>
+                <div class="row mb-2 mx-1">
+                    <div class="col-sm-6 mb-1">
+                        <input type="password" class="form-control" placeholder="Introducir contraseña"
+                            formControlName="password">
+                        <small class="form-text form-muted" *ngIf="checkValidator('password','pattern')">La contraseña
+                            debe contener 8 caracteres con una mayúscula y un número</small>
+                    </div>
+                    <div class="col-sm-6 mb-1">
+                        <input type="password" class="form-control" placeholder="Repetir contraseña"
+                            formControlName="password_repeat">
+                        <small class="form-text text-muted" *ngIf="formulario.hasError('passwordvalidator')">
+                            Las contraseñas no coinciden
+                        </small>
+                    </div>
                 </div>
-            </div>
-            <div class="row mb-3 mx-1">
-                <label for="inputEmail3" class="col-sm-2 col-form-label">Contraseña</label>
-                <div class="col-sm-5 mb-2">
-                    <input type="text" class="form-control" placeholder="Introducir contraseña">
-                </div>
-                <div class="col-sm-5 mb-2">
-                    <input type="text" class="form-control" placeholder="Repetir contraseña">
-                </div>
-            </div>
-            <div class="row mb-3 mx-1">
-                <label for="inputEmail3" class="col-sm-2 col-form-label">Móvil</label>
-                <div class="col-sm-2 mb-2">
-                    <input type="text" class="form-control" placeholder="Código">
-                </div>
-                <div class="col-sm-8 mb-2">
-                    <input type="text" class="form-control" placeholder="Número de teléfono">
-                </div>
-            </div>
-            <div class="row mb-1 mx-1">
-                <label for="inputEmail3" class="col-sm-2 col-form-label">Dirección</label>
-                <div class="col-sm-10 mb-2">
-                    <input type="text" class="form-control" placeholder="Dirección de la calle">
-                </div>
-            </div>
-            <div class="row mb-3 mx-1">
-                <div class="col-sm-4 offset-sm-2 mb-2">
-                    <input type="text" class="form-control" placeholder="Ciudad">
-                </div>
-                <div class="col-sm-4 mb-2">
-                    <input type="text" class="form-control" placeholder="Pais">
-                </div>
-                <div class="col-sm-2 mb-2">
-                    <input type="text" class="form-control" placeholder="CP">
-                </div>
-            </div>
-            <div class="row mb-1 mx-1">
-                <button class="btn btn-primary btn-block">Registrarse</button>
-            </div>
+                <label for="inputEmail3" class="col-form-label ml-1">Móvil</label>
+                <div class="row mb-2 mx-1">
 
+                    <div class="col-sm-6 mb-1">
+                        <input type="text" class="form-control" placeholder="Número de teléfono fijo"
+                            formControlName="phone">
+                    </div>
+                    <div class="col-sm-6 mb-1">
+                        <input type="text" class="form-control" placeholder="Número de móvil" formControlName="mobile">
+                    </div>
+                </div>
+                <label for="inputEmail3" class="col-form-label ml-1">Dirección</label>
+                <div class="row mb-1 mx-1">
+                    <div class="col-sm-12 mb-1">
+                        <input type="text" class="form-control" placeholder="Dirección de la calle"
+                            formControlName="address">
+                    </div>
+                </div>
+                <div class="row mb-2 mx-1">
+                    <div class="col-sm-5 mb-1">
+                        <input type="text" class="form-control" placeholder="Ciudad" formControlName="city">
+                    </div>
+                    <div class="col-sm-5 mb-1">
+                        <input type="text" class="form-control" placeholder="Pais" formControlName="country">
+                    </div>
+                    <div class="col-sm-2 mb-1">
+                        <input type="text" class="form-control" placeholder="CP" formControlName="postcode">
+                    </div>
+                </div>
+                <div class="row mb-1 mx-1 pr-1">
+                    <button type="submit" [disabled]="!formulario.valid"
+                        class="btn btn-primary btn-block">Registrarme</button>
+                </div>
+            </form>
         </div>
     </div>
     <div class="register-footer">
-        <p>¿Ya tienes una cuenta? <a>Inicia sesión ahora</a></p>
+        <p>¿Ya tienes una cuenta? <a>Inicia sesión</a></p>
     </div>
 </section>
