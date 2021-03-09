@@ -2,6 +2,7 @@
 
 section{
     margin-top: 60px !important;
+    color: var(--main-dark-color) !important;
 }
 
 .register-header,
@@ -37,6 +38,10 @@ section{
     padding-left: 5px;
 }
 
+label{
+    color: var(--main-dark-color) !important;
+}
+
 .form-control {
 	display: block;
 	width: 100%;
@@ -45,7 +50,6 @@ section{
 	font-size: 0.8rem;
 	font-weight: 100;
 	line-height: 1.5;
-	color: #030728;
 	background-color: #fff;
 	background-clip: padding-box;
 	border: 1px solid #ced4da;
