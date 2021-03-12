@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { UserService } from 'src/app/services/user.service';
+import Swal from 'sweetalert2/dist/sweetalert2.js';
+
 
 @Component({
   selector: 'app-register',
@@ -11,7 +13,9 @@ export class RegisterComponent implements OnInit {
 
   formulario: FormGroup;
 
-  constructor(private userService: UserService) {
+  constructor(
+    private userService: UserService,
+  ) {
     this.formulario = new FormGroup({
       name: new FormControl('', [
         Validators.required
@@ -20,9 +24,12 @@ export class RegisterComponent implements OnInit {
         Validators.required
       ]),
       email: new FormControl('', [
-        Validators.pattern(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,4}$/)
+        Validators.required,
+        Validators.pattern(/^[0-9a-zA-Z]+([0-9a-zA-Z]*[-._+])*[0-9a-zA-Z]+@[0-9a-zA-Z]+([-.][0-9a-zA-Z]+)*([0-9a-zA-Z]*[.])[a-zA-Z]{2,6}$/)
       ]),
-      email_repeat: new FormControl(),
+      email_repeat: new FormControl('', [
+        Validators.required
+      ]),
       password: new FormControl('', [
         Validators.pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,8}$/)
       ]),
@@ -30,17 +37,11 @@ export class RegisterComponent implements OnInit {
       mobile: new FormControl(),
       phone: new FormControl(),
       address: new FormControl(),
-      city: new FormControl('', [
-        Validators.required
-      ]),
-      postcode: new FormControl('', [
-        Validators.required
-      ]),
-      country: new FormControl('', [
-        Validators.required
-      ])
+      city: new FormControl(),
+      postcode: new FormControl(),
+      country: new FormControl()
 
-    }, [this.passwordValidator]);
+    }, [this.passwordValidator, this.emailValidator]);
   }
 
   ngOnInit(): void {
@@ -56,6 +57,16 @@ export class RegisterComponent implements OnInit {
     return this.formulario.get(controlName).hasError(validatorName) && this.formulario.get(controlName).touched;
   }
 
+  emailValidator(form: FormGroup) {
+    const emailValue = form.get('email').value;
+    const emailRepeatValue = form.get('email_repeat').value;
+    if (emailValue === emailRepeatValue) {
+      return null
+    } else {
+      return { emailValidator: true }
+    }
+  }
+
   passwordValidator(form: FormGroup) {
     const passwordValue = form.get('password').value;
     const passwordRepeatValue = form.get('password_repeat').value;
@@ -65,6 +76,17 @@ export class RegisterComponent implements OnInit {
       return null;
     } else {
       return { passwordvalidator: true }
+    }
+  }
+
+  onClick() {
+    if (this.formulario.valid) {
+      Swal.fire({
+        title: '¡Enhorabuena!',
+        text: 'Ya puedes empezar a crear o asistir a eventos',
+        confirmButtonText: `Continuar`,
+      }
+      )
     }
 
   }

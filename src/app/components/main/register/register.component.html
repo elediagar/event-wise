@@ -29,22 +29,40 @@
                 <label for="inputEmail3" class="col-form-label ml-1">Email</label>
                 <div class="mb-1 mx-1">
                     <input type="email" class="form-control" placeholder="ejemplo@ejemplo.com" formControlName="email">
+                    <small class="form-text text-muted" *ngIf="checkValidator('email','pattern')">
+                        El formato del email no es correcto
+                    </small>
+                    <small class="form-text text-muted" *ngIf="checkValidator('email','required')">
+                        El email es obligatorio
+                    </small>
+
                 </div>
                 <div class="mb-2 mx-1">
                     <input type="email" class="form-control" placeholder="Repetir email" formControlName="email_repeat">
+                    <small class="form-text text-muted" *ngIf="checkValidator('email_repeat','required')">
+                        Introduce tu email de nuevo
+                    </small>
+                    <small class="form-text text-muted"
+                        *ngIf="formulario.hasError('emailValidator') && formulario.get('email_repeat').dirty">
+                        Los emails deben coincidir
+                    </small>
                 </div>
                 <label for="inputEmail3" class="col-form-label ml-1">Contraseña</label>
                 <div class="row mb-2 mx-1">
                     <div class="col-sm-6 mb-1">
                         <input type="password" class="form-control" placeholder="Introducir contraseña"
                             formControlName="password">
-                        <small class="form-text form-muted" *ngIf="checkValidator('password','pattern')">La contraseña
+                        <small class="form-text text-muted" *ngIf="checkValidator('password','required')">
+                            Introduce una contraseña
+                        </small>
+                        <small class="form-text text-muted" *ngIf="checkValidator('password','pattern')">La contraseña
                             debe contener 8 caracteres con una mayúscula y un número</small>
                     </div>
                     <div class="col-sm-6 mb-1">
                         <input type="password" class="form-control" placeholder="Repetir contraseña"
                             formControlName="password_repeat">
-                        <small class="form-text text-muted" *ngIf="formulario.hasError('passwordvalidator')">
+                        <small class="form-text text-muted"
+                            *ngIf="formulario.hasError('passwordvalidator') && formulario.get('password_repeat').dirty">
                             Las contraseñas no coinciden
                         </small>
                     </div>
@@ -79,8 +97,11 @@
                     </div>
                 </div>
                 <div class="row mb-1 mx-1 pr-1">
-                    <button type="submit" [disabled]="!formulario.valid"
-                        class="btn btn-primary btn-block">Registrarme</button>
+                    <button type="submit" [disabled]="!formulario.valid" class="btn btn-primary btn-block"
+                        (click)="onClick()">Registrarme</button>
+                    <small class="form-text text-muted" *ngIf="!formulario.valid">
+                        Debes completar los campos marcados como obligatorios (*)
+                    </small>
                 </div>
             </form>
         </div>
