@@ -12,7 +12,7 @@
     <div class="col-lg-4 offset-lg-4 col-md-10 offset-md-1 col-sm-10 offset-sm-1">
         <div class="form">
             <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
-                <label for="inputEmail3" class="col-form-label ml-1">Nombre</label>
+                <label for="inputEmail3" class="col-form-label ml-1">Nombre*</label>
                 <div class="row mb-2 mx-1">
                     <div class="col-sm-6 mb-1">
                         <input type="text" class="form-control" placeholder="Nombre" formControlName="name">
@@ -26,7 +26,7 @@
                             apellido es obligatorio</small>
                     </div>
                 </div>
-                <label for="inputEmail3" class="col-form-label ml-1">Email</label>
+                <label for="inputEmail3" class="col-form-label ml-1">Email*</label>
                 <div class="mb-1 mx-1">
                     <input type="email" class="form-control" placeholder="ejemplo@ejemplo.com" formControlName="email">
                     <small class="form-text text-muted" *ngIf="checkValidator('email','pattern')">
@@ -47,7 +47,7 @@
                         Los emails deben coincidir
                     </small>
                 </div>
-                <label for="inputEmail3" class="col-form-label ml-1">Contraseña</label>
+                <label for="inputEmail3" class="col-form-label ml-1">Contraseña*</label>
                 <div class="row mb-2 mx-1">
                     <div class="col-sm-6 mb-1">
                         <input type="password" class="form-control" placeholder="Introducir contraseña"
@@ -97,8 +97,8 @@
                     </div>
                 </div>
                 <div class="row mb-1 mx-1 pr-1">
-                    <button type="submit" [disabled]="!formulario.valid" class="btn btn-primary btn-block"
-                        (click)="onClick()">Registrarme</button>
+                    <button type="submit" [disabled]="!formulario.valid"
+                        class="btn btn-primary btn-block">Registrarme</button>
                     <small class="form-text text-muted" *ngIf="!formulario.valid">
                         Debes completar los campos marcados como obligatorios (*)
                     </small>
@@ -107,6 +107,6 @@
         </div>
     </div>
     <div class="register-footer">
-        <p>¿Ya tienes una cuenta? <a>Inicia sesión</a></p>
+        <p>¿Ya tienes una cuenta? <a (click)="onClickLogin('login')">Inicia sesión</a></p>
     </div>
 </section>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
 
@@ -15,6 +16,7 @@ export class RegisterComponent implements OnInit {
 
   constructor(
     private userService: UserService,
+    private router: Router
   ) {
     this.formulario = new FormGroup({
       name: new FormControl('', [
@@ -48,6 +50,14 @@ export class RegisterComponent implements OnInit {
   }
 
   async onSubmit() {
+    if (this.formulario.valid) {
+      Swal.fire({
+        title: '¡Enhorabuena!',
+        text: 'Ya puedes empezar a crear o asistir a eventos',
+        confirmButtonText: `Continuar`,
+      }
+      )
+    }
     // const response = await this.userService.registerUser(this.formulario.value);
     console.log(this.formulario.value);
 
@@ -79,16 +89,9 @@ export class RegisterComponent implements OnInit {
     }
   }
 
-  onClick() {
-    if (this.formulario.valid) {
-      Swal.fire({
-        title: '¡Enhorabuena!',
-        text: 'Ya puedes empezar a crear o asistir a eventos',
-        confirmButtonText: `Continuar`,
-      }
-      )
-    }
-
+  onClickLogin(pUrl: string) {
+    this.router.navigate([pUrl])
   }
+
 
 }

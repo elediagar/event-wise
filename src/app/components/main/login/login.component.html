@@ -1,1 +1,112 @@
-<p>login works!</p>
+<section>
+    <div class="login-header">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="#3ec9cc" class="bi bi-person-circle mt-3 mb-1"
+            viewBox="0 0 16 16">
+            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+            <path fill-rule="evenodd"
+                d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
+        </svg>
+        <h4>¡Te damos la bienvenida!</h4>
+        <p>Crea una cuenta para comenzar</p>
+    </div>
+    <div class="col-lg-4 offset-lg-4 col-md-10 offset-md-1 col-sm-10 offset-sm-1">
+        <div class="form">
+            <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+                <label for="inputEmail3" class="col-form-label ml-1">Nombre*</label>
+                <div class="row mb-2 mx-1">
+                    <div class="col-sm-6 mb-1">
+                        <input type="text" class="form-control" placeholder="Nombre" formControlName="name">
+                        <small class="form-text text-muted" *ngIf="checkValidator('name','required')">
+                            El nombre es obligatorio
+                        </small>
+                    </div>
+                    <div class="col-sm-6 mb-1">
+                        <input type="text" class="form-control" placeholder="Apellidos" formControlName="surname">
+                        <small class="form-text text-muted" *ngIf="checkValidator('surname', 'required')">El
+                            apellido es obligatorio</small>
+                    </div>
+                </div>
+                <label for="inputEmail3" class="col-form-label ml-1">Email*</label>
+                <div class="mb-1 mx-1">
+                    <input type="email" class="form-control" placeholder="ejemplo@ejemplo.com" formControlName="email">
+                    <small class="form-text text-muted" *ngIf="checkValidator('email','pattern')">
+                        El formato del email no es correcto
+                    </small>
+                    <small class="form-text text-muted" *ngIf="checkValidator('email','required')">
+                        El email es obligatorio
+                    </small>
+
+                </div>
+                <div class="mb-2 mx-1">
+                    <input type="email" class="form-control" placeholder="Repetir email" formControlName="email_repeat">
+                    <small class="form-text text-muted" *ngIf="checkValidator('email_repeat','required')">
+                        Introduce tu email de nuevo
+                    </small>
+                    <small class="form-text text-muted"
+                        *ngIf="formulario.hasError('emailValidator') && formulario.get('email_repeat').dirty">
+                        Los emails deben coincidir
+                    </small>
+                </div>
+                <label for="inputEmail3" class="col-form-label ml-1">Contraseña*</label>
+                <div class="row mb-2 mx-1">
+                    <div class="col-sm-6 mb-1">
+                        <input type="password" class="form-control" placeholder="Introducir contraseña"
+                            formControlName="password">
+                        <small class="form-text text-muted" *ngIf="checkValidator('password','required')">
+                            Introduce una contraseña
+                        </small>
+                        <small class="form-text text-muted" *ngIf="checkValidator('password','pattern')">La contraseña
+                            debe contener 8 caracteres con una mayúscula y un número</small>
+                    </div>
+                    <div class="col-sm-6 mb-1">
+                        <input type="password" class="form-control" placeholder="Repetir contraseña"
+                            formControlName="password_repeat">
+                        <small class="form-text text-muted"
+                            *ngIf="formulario.hasError('passwordvalidator') && formulario.get('password_repeat').dirty">
+                            Las contraseñas no coinciden
+                        </small>
+                    </div>
+                </div>
+                <label for="inputEmail3" class="col-form-label ml-1">Móvil</label>
+                <div class="row mb-2 mx-1">
+
+                    <div class="col-sm-6 mb-1">
+                        <input type="text" class="form-control" placeholder="Número de teléfono fijo"
+                            formControlName="phone">
+                    </div>
+                    <div class="col-sm-6 mb-1">
+                        <input type="text" class="form-control" placeholder="Número de móvil" formControlName="mobile">
+                    </div>
+                </div>
+                <label for="inputEmail3" class="col-form-label ml-1">Dirección</label>
+                <div class="row mb-1 mx-1">
+                    <div class="col-sm-12 mb-1">
+                        <input type="text" class="form-control" placeholder="Dirección de la calle"
+                            formControlName="address">
+                    </div>
+                </div>
+                <div class="row mb-2 mx-1">
+                    <div class="col-sm-5 mb-1">
+                        <input type="text" class="form-control" placeholder="Ciudad" formControlName="city">
+                    </div>
+                    <div class="col-sm-5 mb-1">
+                        <input type="text" class="form-control" placeholder="Pais" formControlName="country">
+                    </div>
+                    <div class="col-sm-2 mb-1">
+                        <input type="text" class="form-control" placeholder="CP" formControlName="postcode">
+                    </div>
+                </div>
+                <div class="row mb-1 mx-1 pr-1">
+                    <button type="submit" [disabled]="!formulario.valid"
+                        class="btn btn-primary btn-block">Registrarme</button>
+                    <small class="form-text text-muted" *ngIf="!formulario.valid">
+                        Debes completar los campos marcados como obligatorios (*)
+                    </small>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="login-footer">
+        <p>¿Ya tienes una cuenta? <a (click)="onClickRegister('login')">Inicia sesión</a></p>
+    </div>
+</section>
