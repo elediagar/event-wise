@@ -1,6 +1,7 @@
 @import url(../../../../../src/styles.scss);
 
 section{
+    min-height: 70vh;
     margin-top: 60px !important;
     color: var(--main-dark-color) !important;
 }

@@ -22,6 +22,7 @@ import { EventHeaderComponent } from './components/event/event-header/event-head
 import { EventFooterComponent } from './components/event/event-footer/event-footer.component';
 import { EventComponent } from './components/event/event.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MyeventsComponent } from './components/main/myevents/myevents.component';
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     ListEventsComponent,
     EventHeaderComponent,
     EventFooterComponent,
-    EventComponent
+    EventComponent,
+    MyeventsComponent
   ],
   imports: [
     BrowserModule,

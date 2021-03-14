@@ -10,7 +10,8 @@ import { RegisterComponent } from './components/main/register/register.component
 import { EventHomeComponent } from './components/event/event-home/event-home.component';
 import { EventDescriptionComponent } from './components/event/event-description/event-description.component';
 import { ContactoComponent } from './components/event/contacto/contacto.component';
-import { ListEventsComponent } from './components/main/list-events/list-events.component';
+import { MyeventsComponent } from './components/main/myevents/myevents.component';
+
 
 const routes: Routes = [
   {
@@ -20,7 +21,8 @@ const routes: Routes = [
       { path: 'login', component: LoginComponent },
       { path: 'register', component: RegisterComponent },
       { path: 'new', component: NewComponent },
-      { path: 'event/id/:event_id', component: DetailComponent },
+      { path: 'event-description/:event_id', component: DetailComponent },
+      { path: 'myevents', component: MyeventsComponent },
     ]
   },
   {
