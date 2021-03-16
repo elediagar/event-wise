@@ -47,10 +47,6 @@ section {
 .bg-dark { 
     background-color: white !important; 
 }
-  
-.lh-100 { line-height: 1; }
-.lh-125 { line-height: 1.25; }
-.lh-150 { line-height: 1.5; }
 
 strong{
     font-size: 1rem !important;
@@ -82,4 +78,25 @@ strong{
         padding: 0;
     }
   }
+
+  .nav-link{
+    color: var(--main-dark-color) !important;
+}
+
+.nav-link.active,
+.txt-light .nav-link.active{
+    color: var(--main-color) !important;
+}
+
+a{
+    transition: 0.2s;
+}
+
+a:hover,
+.txt-light a:hover{
+    text-decoration: underline;
+    color: var(--main-color) !important;
+}
+
+  
   

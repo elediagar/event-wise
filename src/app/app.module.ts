@@ -23,6 +23,11 @@ import { EventFooterComponent } from './components/event/event-footer/event-foot
 import { EventComponent } from './components/event/event.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MyeventsComponent } from './components/main/myevents/myevents.component';
+import { HostComponent } from './components/main/myevents/host/host.component';
+import { AttendComponent } from './components/main/myevents/attend/attend.component';
+import { FavComponent } from './components/main/myevents/fav/fav.component';
+import { CardComponent } from './components/main/myevents/card/card.component';
+import { UserHomeComponent } from './components/main/myevents/user-home/user-home.component';
 
 
 @NgModule({
@@ -45,7 +50,12 @@ import { MyeventsComponent } from './components/main/myevents/myevents.component
     EventHeaderComponent,
     EventFooterComponent,
     EventComponent,
-    MyeventsComponent
+    MyeventsComponent,
+    HostComponent,
+    AttendComponent,
+    FavComponent,
+    CardComponent,
+    UserHomeComponent
   ],
   imports: [
     BrowserModule,

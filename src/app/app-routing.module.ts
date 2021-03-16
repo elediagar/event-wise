@@ -11,6 +11,10 @@ import { EventHomeComponent } from './components/event/event-home/event-home.com
 import { EventDescriptionComponent } from './components/event/event-description/event-description.component';
 import { ContactoComponent } from './components/event/contacto/contacto.component';
 import { MyeventsComponent } from './components/main/myevents/myevents.component';
+import { AttendComponent } from './components/main/myevents/attend/attend.component';
+import { HostComponent } from './components/main/myevents/host/host.component';
+import { FavComponent } from './components/main/myevents/fav/fav.component';
+import { UserHomeComponent } from './components/main/myevents/user-home/user-home.component';
 
 
 const routes: Routes = [
@@ -22,7 +26,14 @@ const routes: Routes = [
       { path: 'register', component: RegisterComponent },
       { path: 'new', component: NewComponent },
       { path: 'event-description/:event_id', component: DetailComponent },
-      { path: 'myevents', component: MyeventsComponent },
+      {
+        path: 'myevents', component: MyeventsComponent, children: [
+          { path: 'home', component: UserHomeComponent },
+          { path: 'host', component: HostComponent },
+          { path: 'attend', component: AttendComponent },
+          { path: 'fav', component: FavComponent }
+        ]
+      },
     ]
   },
   {
