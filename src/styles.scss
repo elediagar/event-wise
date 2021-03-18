@@ -13,7 +13,7 @@
 }
 
 body {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Poppins', sans-serif !important;
     font-weight: 400;
     font-size: var(--text-s);
 }
@@ -44,14 +44,21 @@ p {
   }
 
 h1{
-    font-weight: var(--f-weight-l);
+    font-family: 'Poppins', sans-serif !important;
+    font-weight: var(--f-weight-l) !important;
+    font-size: 2rem !important;
 }
 
 h2{
+    font-family: 'Poppins', sans-serif !important;
     font-weight: var(--f-weight-m);
 }
 
 
 
 
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 

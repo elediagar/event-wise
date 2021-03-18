@@ -1,1 +1,81 @@
-<p>new works!</p>
+<section>
+    <div class="container">
+
+
+        <div class="col-lg-8 offset-lg-2 col-md-10 offset-md-1 col-sm-10 offset-sm-1">
+            <h1 mt-3>Crea tu evento online</h1>
+            <p>Completa la información básica y detalles de tu evento</p>
+            <mat-vertical-stepper [linear]="isLinear" #stepper>
+                <mat-step [stepControl]="firstFormGroup">
+                    <form [formGroup]="firstFormGroup" class="form-basic-info">
+                        <ng-template matStepLabel>Datos principales del evento</ng-template>
+                        <p>No te preocupes, siempre puedes volver a editar todos los datos del evento</p>
+                        <mat-form-field class="full-width">
+                            <mat-label>Nombre del evento</mat-label>
+                            <input matInput #message maxlength="256" placeholder="Elige un nombre para tu evento"
+                                formControlName="name" required>
+                            <mat-hint align="start"><strong> </strong> </mat-hint>
+                            <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
+                        </mat-form-field>
+                        <mat-form-field class="full-width">
+                            <mat-label>Tipo de evento</mat-label>
+                            <input type="text" placeholder="Selecciona una opción" aria-label="Tipo" matInput
+                                [formControl]="tipo" [matAutocomplete]="auto" required>
+                            <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+                                <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                                    {{option}}
+                                </mat-option>
+                            </mat-autocomplete>
+                        </mat-form-field>
+
+
+                        <mat-form-field appearance="fill">
+                            <mat-label>Enter a date range</mat-label>
+                            <mat-date-range-input [rangePicker]="picker">
+                                <input matStartDate formControlName="start" placeholder="Start date">
+                                <input matEndDate formControlName="end" placeholder="End date">
+                            </mat-date-range-input>
+                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-date-range-picker #picker></mat-date-range-picker>
+
+                            <mat-error *ngIf="firstFormGroup.controls.start.hasError('matStartDateInvalid')">Invalid
+                                start date</mat-error>
+                            <mat-error *ngIf="firstFormGroup.controls.end.hasError('matEndDateInvalid')">Invalid end
+                                date</mat-error>
+                        </mat-form-field>
+
+
+
+                        <div>
+                            <button class="mt-3" mat-raised-button matStepperNext>Next</button>
+                        </div>
+
+                    </form>
+                </mat-step>
+                <mat-step [stepControl]="secondFormGroup">
+                    <form [formGroup]="secondFormGroup">
+                        <ng-template matStepLabel>Fill out your address</ng-template>
+                        <mat-form-field>
+                            <mat-label>Address</mat-label>
+                            <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"
+                                required>
+                        </mat-form-field>
+                        <div>
+                            <button mat-button mat-raised-button matStepperPrevious>Back</button>
+                            <button mat-button mat-raised-button matStepperNext>Next</button>
+                        </div>
+                    </form>
+                </mat-step>
+                <mat-step>
+                    <ng-template matStepLabel>Done</ng-template>
+                    <p>You are now done.</p>
+                    <div>
+                        <button mat-button matStepperPrevious>Back</button>
+                        <button mat-button (click)="stepper.reset()">Reset</button>
+                    </div>
+                </mat-step>
+            </mat-vertical-stepper>
+
+        </div>
+    </div>
+</section>

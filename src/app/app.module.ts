@@ -29,6 +29,15 @@ import { FavComponent } from './components/main/myevents/fav/fav.component';
 import { CardComponent } from './components/main/myevents/card/card.component';
 import { UserHomeComponent } from './components/main/myevents/user-home/user-home.component';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatStepperModule } from '@angular/material/stepper';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+
 
 @NgModule({
   declarations: [
@@ -55,13 +64,23 @@ import { UserHomeComponent } from './components/main/myevents/user-home/user-hom
     AttendComponent,
     FavComponent,
     CardComponent,
-    UserHomeComponent
+    UserHomeComponent,
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatStepperModule,
+    MatIconModule,
+    MatButtonModule,
+    MatAutocompleteModule,
+    MatDatepickerModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]

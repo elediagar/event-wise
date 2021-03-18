@@ -24,6 +24,9 @@ $(window).on('scroll', function () {
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
+
+
+
 export class HeaderComponent implements OnInit {
 
   constructor() { }
@@ -31,4 +34,11 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
   }
 
+
+  isCollapse = true;   // guardamos el valor
+  toggleState() { // manejador del evento
+    this.isCollapse = !this.isCollapse
+  }
 }
+
+
