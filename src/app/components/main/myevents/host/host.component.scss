@@ -1,3 +1,44 @@
 .card-header{
     font-weight: 600 !important;
 }
+
+strong{
+    font-size: 1rem !important;
+    font-weight: 400;
+}
+
+.card-body{
+    padding: 1rem 1.5rem;
+}
+
+.card-title{
+    font-size: 1rem !important;
+    font-weight: var(--f-weight-m);
+}
+
+.card-text{
+    color: rgb(77, 77, 77);
+}
+
+.col-md-2 a{
+    display: block;
+    margin: 1.5rem;
+}
+
+
+@media (max-width: 400px) {
+    .col-md-2{
+        margin: 1.5rem !important;
+        padding: 0;
+    }
+  }
+
+a{
+    color: var(--main-color) !important;
+    transition: 0.2s;
+}
+
+a:hover,
+.txt-light a:hover{
+    text-decoration: underline;
+}

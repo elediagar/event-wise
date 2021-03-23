@@ -10,7 +10,6 @@ import { LoginComponent } from './components/main/login/login.component';
 import { RegisterComponent } from './components/main/register/register.component';
 import { NewComponent } from './components/main/new/new.component';
 import { DetailComponent } from './components/main/detail/detail.component';
-import { EventDescriptionComponent } from './components/event/event-description/event-description.component';
 import { EventHomeComponent } from './components/event/event-home/event-home.component';
 import { ContactoComponent } from './components/event/contacto/contacto.component';
 import { HeaderComponent } from './components/main/header/header.component';
@@ -37,6 +36,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 
 @NgModule({
@@ -48,7 +48,6 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     RegisterComponent,
     NewComponent,
     DetailComponent,
-    EventDescriptionComponent,
     EventHomeComponent,
     ContactoComponent,
     HeaderComponent,
@@ -80,9 +79,11 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     MatButtonModule,
     MatAutocompleteModule,
     MatDatepickerModule,
-
+    MatNativeDateModule
   ],
-  providers: [],
+  providers: [
+    MatDatepickerModule
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

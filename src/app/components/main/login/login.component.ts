@@ -12,6 +12,7 @@ import Swal from 'sweetalert2';
 export class LoginComponent implements OnInit {
 
   formulario: FormGroup;
+  errorMessage: string;
 
   constructor(
     private userService: UserService,
@@ -28,15 +29,21 @@ export class LoginComponent implements OnInit {
   }
 
   async onSubmit() {
-    if (this.formulario.valid) {
+    this.errorMessage = null;
+    const response = await this.userService.loginUser(this.formulario.value);
+    if (response.error) {
+      setTimeout(() => this.errorMessage = "Datos de acceso incorrectos. Porfavor revisa tu email y contraseña", 500);
+    } else {
+      localStorage.setItem('token_event', response.token);
       Swal.fire({
-        title: '¡Enhorabuena!',
-        text: 'Ya puedes empezar a crear o asistir a eventos',
+        title: '¡Login correcto!',
         confirmButtonText: `Continuar`,
-      }
-      )
+      })
+        .then(result => {
+          this.router.navigate(['/home'])
+        })
+      this.errorMessage = null
     }
-    // const response = await this.userService.loginUser(this.formulario.value);
     console.log(this.formulario.value);
 
   }

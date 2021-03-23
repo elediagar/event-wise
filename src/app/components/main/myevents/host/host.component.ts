@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Event, EventService } from 'src/app/services/event.service';
 
 @Component({
   selector: 'app-host',
@@ -7,13 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HostComponent implements OnInit {
 
+  eventsHost: Event[];
 
-
-  constructor() {
+  constructor(
+    private eventService: EventService
+  ) {
 
   }
 
-  ngOnInit(): void {
+  async ngOnInit() {
+    this.eventsHost = await this.eventService.getEventsHost();
   }
 
 

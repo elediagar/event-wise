@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Event, EventService } from 'src/app/services/event.service';
 
 @Component({
   selector: 'app-event-detail',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DetailComponent implements OnInit {
 
-  constructor() { }
+  event: Event;
+
+  constructor(
+    private eventService: EventService,
+    private activatedRoute: ActivatedRoute
+  ) { }
 
   ngOnInit(): void {
+    this.activatedRoute.params.subscribe(async params => {
+      const arrEvents = await this.eventService.getEventById(params.event_id);
+      this.event = arrEvents[0];
+    })
   }
+
 
 }

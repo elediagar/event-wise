@@ -24,15 +24,15 @@ export class UserService {
   baseUrl: string;
 
   constructor(private httpClient: HttpClient) {
-    this.baseUrl = 'http://localhost:3000'
+    this.baseUrl = 'http://localhost:3000/api/users'
   }
 
-  registerUser(pUser) {
-    return this.httpClient.post(`${this.baseUrl}/register`, pUser).toPromise()
+  registerUser(formValues) {
+    return this.httpClient.post(`${this.baseUrl}/register`, formValues).toPromise()
   }
 
-  loginUser(pUser) {
-    return this.httpClient.post(`${this.baseUrl}/login`, pUser).toPromise()
+  loginUser(formValues): Promise<any> {
+    return this.httpClient.post(`${this.baseUrl}/login`, formValues).toPromise()
   }
 
 }

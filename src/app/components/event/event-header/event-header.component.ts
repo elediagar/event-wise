@@ -12,4 +12,9 @@ export class EventHeaderComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  isCollapse = true;   // guardamos el valor
+  toggleState() { // manejador del evento
+    this.isCollapse = !this.isCollapse
+  }
+
 }

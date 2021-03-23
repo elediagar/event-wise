@@ -8,13 +8,13 @@ import { LoginComponent } from './components/main/login/login.component';
 import { MainComponent } from './components/main/main.component';
 import { RegisterComponent } from './components/main/register/register.component';
 import { EventHomeComponent } from './components/event/event-home/event-home.component';
-import { EventDescriptionComponent } from './components/event/event-description/event-description.component';
 import { ContactoComponent } from './components/event/contacto/contacto.component';
 import { MyeventsComponent } from './components/main/myevents/myevents.component';
 import { AttendComponent } from './components/main/myevents/attend/attend.component';
 import { HostComponent } from './components/main/myevents/host/host.component';
 import { FavComponent } from './components/main/myevents/fav/fav.component';
 import { UserHomeComponent } from './components/main/myevents/user-home/user-home.component';
+import { LoginGuard } from './guards/guard-login';
 
 
 const routes: Routes = [
@@ -24,10 +24,13 @@ const routes: Routes = [
       { path: 'home', component: HomeComponent },
       { path: 'login', component: LoginComponent },
       { path: 'register', component: RegisterComponent },
-      { path: 'new', component: NewComponent },
+      {
+        path: 'new', component: NewComponent,
+        canActivate: [LoginGuard]
+      },
       { path: 'event-description/:event_id', component: DetailComponent },
       {
-        path: 'myevents', component: MyeventsComponent, children: [
+        path: 'myevents', component: MyeventsComponent, canActivate: [LoginGuard], children: [
           { path: 'home', component: UserHomeComponent },
           { path: 'host', component: HostComponent },
           { path: 'attend', component: AttendComponent },
@@ -38,8 +41,9 @@ const routes: Routes = [
   },
   {
     path: 'event/:event-name', component: EventComponent, children: [
+      { path: '', component: EventHomeComponent },
+      { path: 'main', redirectTo: 'home' },
       { path: 'home', component: EventHomeComponent },
-      { path: 'description', component: EventDescriptionComponent },
       { path: 'contact', component: ContactoComponent },
     ]
   }

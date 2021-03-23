@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-new',
@@ -19,7 +21,15 @@ export class NewComponent implements OnInit {
   options: string[] = ['Conferencia', 'Masterclass', 'Proceso de selección'];
   filteredOptions: Observable<string[]>;
 
-  constructor(private formBuilder: FormBuilder) {
+  range = new FormGroup({
+    start: new FormControl(),
+    end: new FormControl()
+  });
+
+  constructor(
+    private formBuilder: FormBuilder,
+    private router: Router
+  ) {
     this.firstFormGroup = this.formBuilder.group({
       name: ['', Validators.required],
       tipo: ['', Validators.required],
@@ -32,11 +42,24 @@ export class NewComponent implements OnInit {
   }
 
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.filteredOptions = this.tipo.valueChanges.pipe(
       startWith(''),
       map(value => this._filter(value))
     );
+    if (localStorage.getItem('token_event')) {
+      return true;
+    } else {
+      Swal.fire({
+        title: 'Para poder crear eventos debes iniciar sesión',
+        confirmButtonText: `Continuar`,
+      })
+        .then(result => {
+          this.router.navigate(['/login'])
+        })
+      return false;
+    }
+
   }
 
   private _filter(value: string): string[] {

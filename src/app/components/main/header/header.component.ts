@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import * as $ from 'jQuery';
+import Swal from 'sweetalert2';
 
 
 $(window).on('scroll', function () {
@@ -29,10 +31,26 @@ $(window).on('scroll', function () {
 
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  show: boolean = true;
 
-  ngOnInit(): void {
+  constructor(
+    private router: Router
+  ) { }
+
+
+  ngOnInit() {
+
   }
+
+  ngDoCheck() {
+    if (localStorage.getItem('token_event')) {
+      this.show = false
+    } else {
+      this.show = true
+    }
+  }
+
+
 
 
   isCollapse = true;   // guardamos el valor

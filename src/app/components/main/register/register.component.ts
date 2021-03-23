@@ -51,14 +51,16 @@ export class RegisterComponent implements OnInit {
 
   async onSubmit() {
     if (this.formulario.valid) {
+      console.log(this.formulario.value);
+      const response = await this.userService.registerUser(this.formulario.value);
       Swal.fire({
         title: '¡Enhorabuena!',
-        text: 'Ya puedes empezar a crear o asistir a eventos',
+        text: 'Haz login y empieza a crear o asistir a eventos',
         confirmButtonText: `Continuar`,
-      }
-      )
+      })
     }
-    // const response = await this.userService.registerUser(this.formulario.value);
+    this.router.navigate(['/login'])
+
     console.log(this.formulario.value);
 
   }
@@ -92,6 +94,10 @@ export class RegisterComponent implements OnInit {
   onClickLogin(pUrl: string) {
     this.router.navigate([pUrl])
   }
+
+
+
+
 
 
 }

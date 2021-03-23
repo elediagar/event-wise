@@ -22,10 +22,10 @@
                         formControlName="password">
                 </div>
                 <div class="my-2 mx-1">
-                    <button type="submit" [disabled]="!formulario.valid"
-                        class="btn btn-primary btn-block">Registrarme</button>
-                    <small class="form-text text-muted" *ngIf="!formulario.valid">
-                        Datos de acceso incorrectos. Porfavor revisa tu email y contraseña
+                    <button type="submit" [disabled]="!formulario.valid" class="btn btn-primary btn-block">Iniciar
+                        sesión</button>
+                    <small class="form-text text-muted" *ngIf="errorMessage">
+                        {{errorMessage}}
                     </small>
                 </div>
             </form>
