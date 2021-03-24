@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Subject } from 'rxjs';
 
 export interface User {
   name: string;
@@ -22,6 +24,7 @@ export interface User {
 export class UserService {
 
   baseUrl: string;
+  private logOut$ = new Subject<boolean>()
 
   constructor(private httpClient: HttpClient) {
     this.baseUrl = 'http://localhost:3000/api/users'
@@ -33,6 +36,16 @@ export class UserService {
 
   loginUser(formValues): Promise<any> {
     return this.httpClient.post(`${this.baseUrl}/login`, formValues).toPromise()
+  }
+
+
+
+  logOut(user: boolean) {
+    this.logOut$.next(true);
+  }
+
+  getlogOut$(): Observable<boolean> {
+    return this.logOut$.asObservable();
   }
 
 }

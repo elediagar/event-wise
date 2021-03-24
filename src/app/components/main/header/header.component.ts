@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import * as $ from 'jQuery';
+import { UserService } from 'src/app/services/user.service';
 import Swal from 'sweetalert2';
 
 
@@ -34,12 +35,16 @@ export class HeaderComponent implements OnInit {
   show: boolean = true;
 
   constructor(
-    private router: Router
+    private router: Router,
+    private userService: UserService
   ) { }
 
 
   ngOnInit() {
+    this.userService.getlogOut$().subscribe(logout => {
+      console.log('probando');
 
+    })
   }
 
   ngDoCheck() {

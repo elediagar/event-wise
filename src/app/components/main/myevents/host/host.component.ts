@@ -17,7 +17,10 @@ export class HostComponent implements OnInit {
   }
 
   async ngOnInit() {
-    this.eventsHost = await this.eventService.getEventsHost();
+    const response = await this.eventService.getEventsHost();
+    if (!response['error']) {
+      this.eventsHost = response
+    }
   }
 
 

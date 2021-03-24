@@ -25,7 +25,6 @@ import { MyeventsComponent } from './components/main/myevents/myevents.component
 import { HostComponent } from './components/main/myevents/host/host.component';
 import { AttendComponent } from './components/main/myevents/attend/attend.component';
 import { FavComponent } from './components/main/myevents/fav/fav.component';
-import { CardComponent } from './components/main/myevents/card/card.component';
 import { UserHomeComponent } from './components/main/myevents/user-home/user-home.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -37,6 +36,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AppHttpInterceptor } from './interceptors/http-interceptor';
+
 
 
 @NgModule({
@@ -62,8 +64,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     HostComponent,
     AttendComponent,
     FavComponent,
-    CardComponent,
-    UserHomeComponent,
+    UserHomeComponent
 
   ],
   imports: [
@@ -82,7 +83,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatNativeDateModule
   ],
   providers: [
-    MatDatepickerModule
+    MatDatepickerModule,
+    { provide: HTTP_INTERCEPTORS, useClass: AppHttpInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })

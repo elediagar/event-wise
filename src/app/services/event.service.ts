@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
+
 export interface Event {
   id: number;
   name: string;
@@ -27,7 +28,10 @@ export class EventService {
 
   baseUrl: string;
 
-  constructor(private httpClient: HttpClient) {
+  constructor(
+    private httpClient: HttpClient,
+
+  ) {
 
     this.baseUrl = "http://localhost:3000/api/events"
 
@@ -64,4 +68,6 @@ export class EventService {
       })
     }
   }
+
+
 }
