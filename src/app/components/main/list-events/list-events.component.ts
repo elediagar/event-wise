@@ -11,6 +11,7 @@ import { Observable } from 'rxjs';
 export class ListEventsComponent implements OnInit {
 
   arrEvents: Event[];
+  arrEventsFav: Event[];
   events$: Observable<Event[]>;
 
   constructor(
@@ -23,15 +24,17 @@ export class ListEventsComponent implements OnInit {
 
   async ngOnInit() {
     this.arrEvents = await this.eventService.getAll();
+    this.arrEventsFav = (await this.eventService.getEventsFav()) || [];
+    for (let event of this.arrEvents) {
+      event.fav = this.arrEventsFav.some(e => e.id === event.id)
+    }
+    console.log(this.arrEvents);
 
-    /*     //OBSERVABLES
-        this.events$ = this.eventService.getEvents$();
-        this.events$.subscribe(events => this.arrEvents = events) */
+
+
   }
 
-  getEvent(pId) {
-    this.router.navigate(['event-description', pId]);
-  }
+
 
 }
 

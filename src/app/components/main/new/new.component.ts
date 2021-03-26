@@ -1,8 +1,10 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
+import { UserService } from 'src/app/services/user.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -28,7 +30,7 @@ export class NewComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private router: Router
+    private router: Router,
   ) {
     this.firstFormGroup = this.formBuilder.group({
       name: ['', Validators.required],
@@ -43,6 +45,7 @@ export class NewComponent implements OnInit {
 
 
   ngOnInit() {
+
     this.filteredOptions = this.tipo.valueChanges.pipe(
       startWith(''),
       map(value => this._filter(value))

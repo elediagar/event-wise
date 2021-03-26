@@ -18,8 +18,9 @@ export class DetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(async params => {
-      const arrEvents = await this.eventService.getEventById(params.event_id);
-      this.event = arrEvents[0];
+      this.event = await this.eventService.getEventById(params.event_id);
+      console.log(this.event);
+
     })
   }
 

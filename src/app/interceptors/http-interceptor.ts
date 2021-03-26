@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Observable, of } from "rxjs";
 import { tap, catchError } from "rxjs/operators";
 import Swal from 'sweetalert2';
+import { UserService } from '../services/user.service';
 
 @Injectable()
 export class AppHttpInterceptor implements HttpInterceptor {
@@ -12,6 +13,7 @@ export class AppHttpInterceptor implements HttpInterceptor {
 
     constructor(
         private router: Router,
+        private userService: UserService
     ) { }
 
     intercept(
@@ -25,6 +27,7 @@ export class AppHttpInterceptor implements HttpInterceptor {
                     console.log(evt.body);
                     if (evt.body.error === "el token está caducado") {
                         localStorage.removeItem('token_event')
+                        this.userService.emitLogOut()
                         Swal.fire({
                             title: 'Lo sentimos, la sesión ha caducado',
                             confirmButtonText: `Continuar`,
@@ -32,6 +35,9 @@ export class AppHttpInterceptor implements HttpInterceptor {
                             .then(result => {
                                 this.router.navigate(['/login'])
                             })
+
+
+
                     } else {
                         return evt.body.error
                     }
@@ -46,8 +52,8 @@ export class AppHttpInterceptor implements HttpInterceptor {
 
 
 
-    }
 
+    }
 
 
 

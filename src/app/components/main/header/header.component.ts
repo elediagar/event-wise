@@ -42,8 +42,9 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
     this.userService.getlogOut$().subscribe(logout => {
-      console.log('probando');
+      console.log('recibo evento logut');
 
+      this.show = false;
     })
   }
 
@@ -55,7 +56,23 @@ export class HeaderComponent implements OnInit {
     }
   }
 
+  onClick() {
+    localStorage.removeItem('token_event')
+    let timerInterval
+    Swal.fire({
+      title: '¡Esperamos verte pronto!',
+      text: 'Te estamos redirigiendo a la página de inicio',
+      timer: 2500,
+      timerProgressBar: true,
+      didOpen: () => Swal.showLoading(),
+      willClose: () => clearInterval(timerInterval)
+    }).then((result) => {
+      this.userService.emitLogOut()
+      this.router.navigate(['/home'])
+    })
 
+
+  }
 
 
   isCollapse = true;   // guardamos el valor

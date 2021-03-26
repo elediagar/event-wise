@@ -26,6 +26,7 @@ export class UserService {
   baseUrl: string;
   private logOut$ = new Subject<boolean>()
 
+
   constructor(private httpClient: HttpClient) {
     this.baseUrl = 'http://localhost:3000/api/users'
   }
@@ -40,12 +41,15 @@ export class UserService {
 
 
 
-  logOut(user: boolean) {
+  emitLogOut() {
+    console.log('emito evento logout')
     this.logOut$.next(true);
   }
 
   getlogOut$(): Observable<boolean> {
     return this.logOut$.asObservable();
   }
+
+
 
 }

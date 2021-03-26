@@ -16,7 +16,7 @@
             </li>
         </ul>
         <div class="row row-cols-1 row-cols-md-3">
-            <div class="cards" *ngFor="let event of arrEvents" (click)="getEvent(event?.id)">
+            <div class="cards" *ngFor="let event of arrEvents">
                 <app-card-event [evento]="event"></app-card-event>
             </div>
             <!-- if click quiero que muestre <app-detail></app-detail> con el detalle del evento sobre el que hago click,  como si fuese un alert-->

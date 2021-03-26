@@ -8,11 +8,6 @@
     color: var(--main-color);
 }
 
-.card{
-    cursor: pointer;
-}
-
-
 /* Imagenes */
 .card-img-top {
     width: 100%;
@@ -25,21 +20,20 @@
     overflow: hidden;
 }
 
-h6{
+.card-content{
+    cursor: pointer;
+}
+
+.icon{
     position: absolute;
-    width: 100%;
-    height:100%;
-    top: 0;
-    left: 0;
-    background-color: rgba(0, 0, 0, 0.4);
-    color: white;
-    text-align: center;
-    padding-top: 150px;
-    font-weight: 600;
-    margin-top: 350px;
-    transition: 0.5s;
-    
+    top:5px;
+    right: 0px;
+    font-size: 14px;
+    line-height: 22px;
+    font-weight: 400;
+    z-index: 10;
 }
-h6:hover {
-    margin-top: 0px;
-}
+
+
+
+

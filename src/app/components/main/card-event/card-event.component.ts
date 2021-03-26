@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Event } from 'src/app/services/event.service';
+import { Router } from '@angular/router';
+import { Event, EventService } from 'src/app/services/event.service';
 
 
 
@@ -14,11 +15,42 @@ import { Event } from 'src/app/services/event.service';
 
 export class CardEventComponent implements OnInit {
 
+
   @Input() evento: Event;
 
-  constructor() { }
+  show: boolean = false;
+
+  constructor(
+    private router: Router,
+    private eventService: EventService
+  ) { }
 
   ngOnInit(): void {
   }
+
+  getEvent(pId) {
+    this.router.navigate(['event-description', pId]);
+  }
+
+  async onClickFav(pId) {
+    console.log(this.evento.fav);
+
+    if (!this.evento.fav) {
+      const response = await this.eventService.addEventsFav(pId)
+    } else {
+      const response = await this.eventService.deleteEventsFav(pId)
+    }
+    this.evento.fav = !this.evento.fav
+
+  }
+
+  async onClickAttend(pId) {
+
+
+  }
+
+
+
+
 
 }
