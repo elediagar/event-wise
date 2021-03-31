@@ -6,6 +6,47 @@
     background-color: var(--main-dark-color) !important; 
 }
 
+mat-icon,
+nav{
+    transition: 0.5s;
+}
+
+mat-icon,
+.nav-link{
+    cursor: pointer;
+    margin-top: 5px;
+    color: white !important;
+}
+
+mat-icon.active,
+.nav-link.active,
+.txt-light .nav-link.active{
+    color: var(--main-color) !important;
+}
+
+.txt-light a{
+    color: white !important;
+}
+
+a{
+    transition: 0.2s;
+}
+
+mat-icon:hover,
+a:hover,
+.txt-light a:hover{
+    text-decoration: underline;
+    color: var(--main-color) !important;
+}
+
+.mat-icon {
+    background-repeat: no-repeat;
+    display: inline-block;
+    color: var(--main-color);
+    height: 18px;
+    width: 18px;
+}
+
 .navbar-nav {
     display: flex;
     flex-direction: row;

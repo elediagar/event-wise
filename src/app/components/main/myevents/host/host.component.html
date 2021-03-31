@@ -9,11 +9,14 @@
                             <p class="card-title">{{eventHost.name}}</p>
                         </div>
                         <p class="card-text">{{eventHost.date_start | date:"dd MMM. YYYY"}}</p>
+                        <button class="btn btn-primary" (click)="onClickEvent(eventHost.id)">Ver mi evento</button>
                     </div>
                 </div>
                 <div class="col-md-2">
-                    <a>Editar</a>
-                    <a class="btn-delete" (click)="onClickDelete(eventHost.id)">Eliminar</a>
+                    <a class="btn-edit" (click)="onClickEdit(eventHost.id)">Editar</a>
+                    <a class="btn-delete" (click)="onClickDelete(eventHost.id)">
+                        <mat-icon>delete_sweep</mat-icon>
+                    </a>
                 </div>
             </div>
         </div>
@@ -34,8 +37,10 @@
                     </div>
                 </div>
                 <div class="col-md-2">
-                    <a href="#">Editar</a>
-                    <a class="btn-delete" href="#">Eliminar</a>
+                    <a class="btn-edit" (click)="onClickEdit(eventHostExpired.id)">Editar</a>
+                    <a class="btn-delete" (click)="onClickDelete(eventHostExpired.id)">
+                        <mat-icon>delete_sweep</mat-icon>
+                    </a>
                 </div>
             </div>
         </div>

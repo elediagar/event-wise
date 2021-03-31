@@ -29,8 +29,8 @@ export class AppHttpInterceptor implements HttpInterceptor {
                         localStorage.removeItem('token_event')
                         this.userService.emitLogOut()
                         Swal.fire({
-                            title: 'Lo sentimos, la sesión ha caducado',
-                            confirmButtonText: `Continuar`,
+                            title: 'Lo sentimos, la sesión ha caducado, inicia sesión para continuar',
+                            confirmButtonText: `Iniciar sesión`,
                         })
                             .then(result => {
                                 this.router.navigate(['/login'])

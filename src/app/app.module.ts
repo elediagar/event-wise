@@ -38,7 +38,15 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppHttpInterceptor } from './interceptors/http-interceptor';
-
+import { MatSelectModule } from '@angular/material/select';
+import { FormsModule } from '@angular/forms';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatRadioModule } from '@angular/material/radio';
+import { RoomsComponent } from './components/event/rooms/rooms.component';
+import { DescriptionComponent } from './components/event/description/description.component';
+import { EditFormComponent } from './components/main/myevents/edit-form/edit-form.component';
+import { EditorModule } from '@tinymce/tinymce-angular';
+import { NgMatSearchBarModule } from 'ng-mat-search-bar';
 
 
 @NgModule({
@@ -64,7 +72,10 @@ import { AppHttpInterceptor } from './interceptors/http-interceptor';
     HostComponent,
     AttendComponent,
     FavComponent,
-    UserHomeComponent
+    UserHomeComponent,
+    RoomsComponent,
+    DescriptionComponent,
+    EditFormComponent
 
   ],
   imports: [
@@ -80,7 +91,15 @@ import { AppHttpInterceptor } from './interceptors/http-interceptor';
     MatButtonModule,
     MatAutocompleteModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatSelectModule,
+    MatInputModule,
+    MatCheckboxModule,
+    MatRadioModule,
+    FormsModule,
+    BrowserModule,
+    EditorModule,
+    NgMatSearchBarModule
   ],
   providers: [
     MatDatepickerModule,

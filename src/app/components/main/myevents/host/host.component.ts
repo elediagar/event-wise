@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Event, EventService } from 'src/app/services/event.service';
 import Swal from 'sweetalert2';
 
@@ -13,7 +14,8 @@ export class HostComponent implements OnInit {
   eventsHostExpired: Event[];
 
   constructor(
-    private eventService: EventService
+    private eventService: EventService,
+    private router: Router
   ) {
 
   }
@@ -31,7 +33,7 @@ export class HostComponent implements OnInit {
 
   async onClickDelete(pId) {
     Swal.fire({
-      title: '¿Estas seguro de que quieres eliminar el producto?',
+      title: '¿Estas seguro de que quieres eliminar el evento?',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3ec9cc',
@@ -41,11 +43,18 @@ export class HostComponent implements OnInit {
       if (result.isConfirmed) {
         const response = await this.eventService.changeStatus(pId);
         this.eventsHost = await this.eventService.getEventsHost();
+        this.eventsHostExpired = await this.eventService.getEventsHostExpired();
         Swal.fire('Articulo borrado')
       }
     })
+  }
 
+  onClickEdit(pId) {
+    this.router.navigate(['myevents', 'edit', pId])
+  }
 
+  onClickEvent(pId) {
+    this.router.navigate(['event', pId])
   }
 
 

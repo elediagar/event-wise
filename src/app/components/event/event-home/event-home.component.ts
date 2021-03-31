@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Event, EventService } from 'src/app/services/event.service';
 
 @Component({
   selector: 'app-event-home',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EventHomeComponent implements OnInit {
 
-  constructor() { }
+  event: Event;
+  arrEvents: Event[];
+
+  constructor(
+    private eventService: EventService,
+    private activatedRoute: ActivatedRoute
+  ) { }
 
   ngOnInit(): void {
+    this.activatedRoute.params.subscribe(async params => {
+      this.event = await this.eventService.getEventAttendById(params.event_id);
+      console.log(this.event);
+    });
   }
-
 }

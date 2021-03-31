@@ -18,8 +18,6 @@ export class CardEventComponent implements OnInit {
 
   @Input() evento: Event;
 
-  show: boolean = false;
-
   constructor(
     private router: Router,
     private eventService: EventService
@@ -41,13 +39,9 @@ export class CardEventComponent implements OnInit {
       const response = await this.eventService.deleteEventsFav(pId)
     }
     this.evento.fav = !this.evento.fav
-
   }
 
-  async onClickAttend(pId) {
 
-
-  }
 
 
 

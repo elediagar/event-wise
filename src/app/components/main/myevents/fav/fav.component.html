@@ -13,7 +13,7 @@
                     </div>
                 </div>
                 <div class="col-md-2">
-                    <a>Ver detalles</a>
+                    <a class="btn-view" (click)="onClickDetails(eventFav.id)">Ver detalles</a>
                     <a class="btn-delete" (click)="deleteFav(eventFav.id)">Quitar de favoritos</a>
                 </div>
             </div>
@@ -35,8 +35,7 @@
                     </div>
                 </div>
                 <div class="col-md-2">
-                    <a href="#">Editar</a>
-                    <a class="btn-delete" href="#">Eliminar</a>
+                    <a class="btn-delete" (click)="deleteFav(eventFavExpired.id)">Quitar de favoritos</a>
                 </div>
             </div>
         </div>

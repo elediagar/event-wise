@@ -5,7 +5,7 @@
         <div class="col-lg-8 offset-lg-2 col-md-10 offset-md-1 col-sm-10 offset-sm-1">
             <h2 mt-3>Crea tu evento online</h2>
             <p>Completa la información básica y detalles de tu evento</p>
-            <form [formGroup]="formGroup" (ngSubmit)="onSubmit()" class="form-basic-info">
+            <form *ngIf="event" [formGroup]="formGroup" (ngSubmit)="onSubmit()" class="form-basic-info">
                 <mat-vertical-stepper formArrayName="formArray" [linear]="isLinear" #stepper>
                     <mat-step formGroupName="0" [stepControl]="formArray?.get([0])">
 
@@ -115,7 +115,6 @@
                             </mat-hint>
                         </mat-form-field>
 
-
                         <div class="mat-form-field-wrapper mt-4">
                             <mat-label>Descripción completa del evento</mat-label>
                             <editor apiKey="6xspxuk992loiakphoo8w56vvz7tv5haap8kfsaj91miibgi"
@@ -128,7 +127,6 @@
                                 min_height: 200
                               }">
                             </editor>
-
                         </div>
 
                         <mat-form-field appearance="fill">

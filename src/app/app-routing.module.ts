@@ -15,6 +15,8 @@ import { HostComponent } from './components/main/myevents/host/host.component';
 import { FavComponent } from './components/main/myevents/fav/fav.component';
 import { UserHomeComponent } from './components/main/myevents/user-home/user-home.component';
 import { LoginGuard } from './guards/guard-login';
+import { EditFormComponent } from './components/main/myevents/edit-form/edit-form.component';
+
 
 
 const routes: Routes = [
@@ -28,19 +30,20 @@ const routes: Routes = [
         path: 'new', component: NewComponent,
         canActivate: [LoginGuard]
       },
-      { path: 'event-description/:event_id', component: DetailComponent },
+      { path: 'event-description/:event_id', component: DetailComponent, canActivate: [LoginGuard] },
       {
         path: 'myevents', component: MyeventsComponent, canActivate: [LoginGuard], children: [
           { path: 'home', component: UserHomeComponent },
           { path: 'host', component: HostComponent },
           { path: 'attend', component: AttendComponent },
-          { path: 'fav', component: FavComponent }
+          { path: 'fav', component: FavComponent },
+          { path: 'edit/:event_id', component: EditFormComponent }
         ]
       },
     ]
   },
   {
-    path: 'event/:event-name', component: EventComponent, children: [
+    path: 'event/:event_id', component: EventComponent, children: [
       { path: '', component: EventHomeComponent },
       { path: 'main', redirectTo: 'home' },
       { path: 'home', component: EventHomeComponent },

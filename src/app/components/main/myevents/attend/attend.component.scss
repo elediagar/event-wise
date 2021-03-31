@@ -20,8 +20,13 @@ strong{
     color: rgb(77, 77, 77);
 }
 
+.btn-view,
 .btn-delete{
     cursor: pointer;
+}
+
+.btn-delete{
+    color: #343a40 !important;
 }
 
 .col-md-2 a{

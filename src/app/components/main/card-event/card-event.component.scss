@@ -7,6 +7,9 @@
 .card-body .card-text{
     color: var(--main-color);
 }
+.card-body .company {
+    color: #212529;
+}
 
 /* Imagenes */
 .card-img-top {
@@ -18,9 +21,15 @@
 .card-body{
     position: relative;
     overflow: hidden;
+    height: 150px;
+}
+
+.card-body:hover{
+    background-color: #f3f3f3;
 }
 
 .card-content{
+    transition: 0.2s;
     cursor: pointer;
 }
 
@@ -32,6 +41,10 @@
     line-height: 22px;
     font-weight: 400;
     z-index: 10;
+}
+
+strong{
+    font-weight: 600;
 }
 
 

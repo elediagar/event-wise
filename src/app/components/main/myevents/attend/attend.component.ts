@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Event, EventService } from 'src/app/services/event.service';
 
 @Component({
@@ -12,7 +13,8 @@ export class AttendComponent implements OnInit {
   eventsAttendExpired: Event[];
 
   constructor(
-    private eventService: EventService
+    private eventService: EventService,
+    private router: Router
   ) { }
 
   async ngOnInit() {
@@ -24,6 +26,18 @@ export class AttendComponent implements OnInit {
     if (!eventsExpired['error']) {
       this.eventsAttendExpired = eventsExpired
     }
+  }
+
+  async deleteAttend(pId) {
+    await this.eventService.deleteEventsAttend(pId);
+    const response = await this.eventService.getEventsAttend();
+    if (!response['error']) {
+      this.eventsAttend = response
+    }
+  }
+
+  onClickDetails(pId) {
+    this.router.navigate(['event-description', pId])
   }
 
 }

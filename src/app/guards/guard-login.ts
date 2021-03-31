@@ -24,8 +24,8 @@ export class LoginGuard implements CanActivate {
             return true;
         } else {
             Swal.fire({
-                title: 'Para poder crear eventos debes iniciar sesión',
-                confirmButtonText: `Continuar`,
+                title: 'Lo sentimos, debes iniciar sesión para poder realizar esta acción',
+                confirmButtonText: `Iniciar sesión`,
             })
                 .then(result => {
                     this.router.navigate(['/login'])

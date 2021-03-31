@@ -13,7 +13,7 @@
     <div class="col mb-4">
         <div class="card h-100">
             <div class="wrapper">
-                <img class="card-img-top" src="../../../../assets/img/event-concentrate.jpg" alt="Card image cap">
+                <img class="card-img-top" [src]="[evento?.img]" alt="Card image cap">
                 <div class="icon" *ngIf="!evento?.fav">
                     <span>
                         <button class="btn" (click)="onClickFav(evento?.id)">
@@ -36,7 +36,7 @@
             <div class="card-body">
                 <div class="card-content" (click)="getEvent(evento?.id)">
                     <p class="card-title">{{evento?.name}}</p>
-                    <p class="card-text">{{evento?.company_name}}</p>
+                    <p class="card-text company">Empresa organizadora: <strong>{{evento?.company_name}}</strong> </p>
                     <p class="card-text">{{evento?.date_start | date:"dd MMM. YYYY"}}</p>
                 </div>
 

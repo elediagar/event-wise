@@ -2,7 +2,7 @@
 
     <div class="row align-items-center my-5">
         <div class="col-lg-7">
-            <img class="img-fluid rounded mb-4 mb-lg-0" src="../../../../assets/img/jump.jpg" alt="">
+            <img class="img-fluid rounded mb-4 mb-lg-0" [src]="[event.img]" alt="">
         </div>
 
         <div class="col-lg-5">
@@ -12,7 +12,12 @@
             <p>Fecha de fin - {{event.date_end | date:"dd MMM. YYYY"}}</p>
             <p>Organizado por {{event.company_name}}</p>
             <p>{{event.address}}</p>
-            <a class="btn btn-primary" href="#">Inscribirme a este evento</a>
+
+            <a class="btn btn-secondary mr-4" *ngIf="event?.attend" (click)="onClickAttend(event.id)">
+                Desinscribirme</a>
+            <a class="btn btn-primary" *ngIf="event?.attend" (click)="onClickAccess(event.id)">Acceder</a>
+            <a class="btn btn-primary" *ngIf="!event?.attend" (click)="onClickAttend(event.id)"> Inscribirme a este
+                evento </a>
         </div>
     </div>
 

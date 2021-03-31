@@ -20,8 +20,18 @@ strong{
     color: rgb(77, 77, 77);
 }
 
+.btn-edit,
 .btn-delete{
     cursor: pointer;
+}
+
+.btn-delete{
+    color: #343a40 !important;
+}
+
+.card-body .btn-primary{
+    box-shadow: none;
+    padding: 5px 10px !important;
 }
 
 .col-md-2 a{

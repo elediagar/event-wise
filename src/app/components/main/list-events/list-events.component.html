@@ -1,25 +1,43 @@
 <section>
     <div class="container pt-5">
-        <h2>Eventos populares</h2>
-        <ul class="nav nav-tabs mb-4">
+        <ul class="nav nav-tabs">
             <li class="nav-item">
-                <a class="nav-link active">Active<span class="badge badge-primary">13</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link">Link</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link">Link</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link disabled" tabindex="-1" aria-disabled="true">Disabled</a>
+                <h2 class="nav-link active">Eventos populares</h2>
             </li>
         </ul>
+        <div class="row justify-content-end mx-1 mt-3">
+            <div class="search-bar">
+                <div class="col-md-6 col-12 justify-content-end">
+                    <mat-search-bar class="justify-content-end" (onBlur)="onEnterring($event)"
+                        (onEnter)="onEnterring($event)"><input #input matInput type="text" [(ngModel)]="value"
+                            placeholder="Enter" (keyup.enter)="onEnterring(input.value)" autocapitalize="none" />
+                    </mat-search-bar>
+                </div>
+            </div>
+            <div class="col-md-6 col-12 justify-content-end">
+                <mat-form-field class="mr-3" appearance="fill">
+                    <mat-label>Categorías</mat-label>
+                    <mat-select [formControl]="categories" multiple (selectionChange)="onChange($event)">
+                        <mat-select-trigger>
+                            {{categories.value ? categories.value[0] : ''}}
+                            <span *ngIf="categories.value?.length > 1" class="additional-selection">
+                                (+{{categories.value.length - 1}} {{categories.value?.length === 2 ? 'otro' : 'otros'}})
+                            </span>
+                        </mat-select-trigger>
+                        <mat-option *ngFor="let category of categoryList" [value]="category">
+                            {{category}}
+
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </div>
+
+
         <div class="row row-cols-1 row-cols-md-3">
             <div class="cards" *ngFor="let event of arrEvents">
                 <app-card-event [evento]="event"></app-card-event>
             </div>
-            <!-- if click quiero que muestre <app-detail></app-detail> con el detalle del evento sobre el que hago click,  como si fuese un alert-->
         </div>
     </div>
 </section>
